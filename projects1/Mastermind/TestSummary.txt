@@ -1,0 +1,400 @@
+Testing the readFile class:
+
+CODE:
+readFile s = new readFile("Mastermind.txt");
+System.out.println(s.getShowSecretCode());
+System.out.println(s.getNumColors());
+System.out.println(s.getNumPegs());
+System.out.println(s.getNumGuesses());
+System.out.println(s.getColorNamesString());
+String [] c = s.getColorNamesArray();
+for(int i = 0; i < c.length; i++)
+{
+	System.out.println(c[i]);
+}		
+System.out.println(s.getColorInitialsString());
+System.out.println(s.getColorInitialsArray()[1]);
+
+-------
+OUTPUT:
+true
+6
+4
+12
+Blue Green Orange Purple Red Yellow
+Blue
+Green
+Orange
+Purple
+Red
+Yellow
+BGOPRY
+G
+
+===================================================
+
+Testing the RandString class:
+
+CODE:
+char[] a = {'a', 'b', 'c', 'd'};
+RandString s = new RandString(3, a);
+System.out.println(s.getSecretCode());
+System.out.println(s.getLength());
+
+--------------
+OUTPUT:
+bac
+3
+
+===================================================
+
+Testing the blackPegs class:
+
+CODE:
+char[] a = {'a', 'b', 'c', 'd'};
+char[] user = {'a', 'b', 'd', 'd'};
+blackPegs b = new blackPegs();
+System.out.println(b.correctBlack(a, user));
+
+----------------
+OUTPUT:
+3
+
+=====================================================
+
+Testing the whitePegs class and blackPegs class together:
+
+CODE:
+whitePegs w = new whitePegs();
+final char[] secret = {'a', 'b', 'c', 'd'};
+final char[] user = {'a', 'b', 'd', 'b'};
+blackPegs b = new blackPegs();
+System.out.println(w.correctWhite(secret, user));
+System.out.println(b.correctBlack(secret, user));
+System.out.println(secret);
+System.out.println(user);
+
+-----------------
+OUTPUT:
+1
+2
+abcd
+abdb
+
+==================================================
+
+Testing the inputString class:
+
+CODE:
+inputString usr = new inputString(4);
+char[] colorInitials = {'G', 'Y', 'B', 'R', 'P', 'O'};
+usr.readString();
+System.out.println(usr.validCase(colorInitials));
+
+------------
+OUTPUT:
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: BrPO
+false
+
+====================================================
+
+Testing the printBlackAndWhite class:
+
+CODE:
+printBlackAndWhite bw = new printBlackAndWhite(2, 1);//2 black, 1 white
+System.out.println(bw.printStringArray(4));
+
+-------------
+OUTPUT:
+Black Black White 
+
+======================================================
+
+Testing the getSecretString method in the RandString class:
+
+CODE:
+char [] a = {'A', 'B', 'C', 'D', 'E', 'F'};
+RandString r = new RandString(4, a);
+System.out.println(r.getSecretString());
+
+-------------
+OUTPUT:
+EFBC
+
+================================================================
+
+Testing the Mastermind class:
+
+CODE: (See mastermind class)
+
+-------
+OUTPUT:
+Welcome to Mastermind.
+
+This is a text version of the classic board game Mastermind.
+The computer will think of a secret code.
+The code consists of 4 colored pegs.
+The pegs may be one of the following colors: Blue Green Orange Purple Red Yellow
+
+A color may appear more than once in the code.
+
+You try to guess what colored pegs are in the code and what order they are in
+After making a guess the result will be displayed.
+A result consists of a black peg for each peg you have exactly correct (color an
+d position) in your guess.
+For each peg in the guess that is the correct color, but is out of position, you
+ get a white peg.
+
+Only the first letter of the color is displayed. B for Blue, R for Red, and so f
+orth.
+When entering guesses you only need to enter the first character of the color as
+ a capital letter.
+
+You have 12 guesses to get the answer or you lose the game.
+
+Generating secret code ....
+
+You have 12 guesses left
+
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: OROR
+
+.... Secret Code
+OROR Result: White
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: POGG
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: OOGP
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+....
+....
+....
+....
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: ROGY
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+....
+....
+....
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: GOGG
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+....
+....
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: PBB
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: OBBB
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+....
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: PRRP
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+PRRP Result: Black White White
+....
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: BOBP
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+PRRP Result: Black White White
+BOBP Result: Black
+....
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: RORY
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+PRRP Result: Black White White
+BOBP Result: Black
+RORY Result: Black
+....
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: RGGGG
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: RGOO
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+PRRP Result: Black White White
+BOBP Result: Black
+RORY Result: Black
+RGOO Result: Black Black
+....
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: PPGG
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+PRRP Result: Black White White
+BOBP Result: Black
+RORY Result: Black
+RGOO Result: Black Black
+PPGG Result: White White White
+....
+The secret code is:RGPP
+
+What is your next guess?
+Type in the characters for your guess and press enter.
+Enter guess: PGGP
+
+.... Secret Code
+OROR Result: White
+POGG Result: White White
+OOGP Result: Black White
+ROGY Result: Black White
+GOGG Result: White
+OBBB Result: No pegs
+PRRP Result: Black White White
+BOBP Result: Black
+RORY Result: Black
+RGOO Result: Black Black
+PPGG Result: White White White
+PGGP Result: Black Black White
+GAME OVER. You lose.
+The secret code was: RGPP
+
+Enter "reset" for another game or anything else to quit:
+A
+

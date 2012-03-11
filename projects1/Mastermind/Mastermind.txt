@@ -1,0 +1,11 @@
+0	//Decides if the secret code will be shown (1 = true) (0 = false)
+6	//number of colors
+4	//number of pegs
+15	//number of guesses
+Blue	//name of colors (with a capital letter)
+Green
+Orange
+Purple
+Red
+Yellow
+//Press enter after your last color
